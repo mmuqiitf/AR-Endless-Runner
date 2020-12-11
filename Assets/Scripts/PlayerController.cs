@@ -18,4 +18,12 @@ public class PlayerController : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = new Vector3(joystick.Horizontal * 5f, rigidbody.velocity.y, joystick.Vertical * 5f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Obstacle")
+        {
+            Debug.Log("fit");
+        }
+    }
 }

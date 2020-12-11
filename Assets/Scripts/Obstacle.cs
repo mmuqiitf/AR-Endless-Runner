@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour
     public float speed = 50f;
     private Rigidbody rb;
     private Vector3 screenBounds;
+    public GameObject panelMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,23 @@ public class Obstacle : MonoBehaviour
         if (transform.position.z < screenBounds.z)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            Debug.Log("fit");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            Debug.Log("fit");
+            panelMenu.SetActive(true);
         }
     }
 }
