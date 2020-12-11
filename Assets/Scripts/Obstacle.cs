@@ -7,13 +7,11 @@ public class Obstacle : MonoBehaviour
     public float speed = 50f;
     private Rigidbody rb;
     private Vector3 screenBounds;
-    public GameObject panelMenu;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
     }
 
     // Update is called once per frame
@@ -26,20 +24,12 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            Debug.Log("fit");
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player")
         {
-            Debug.Log("fit");
-            panelMenu.SetActive(true);
+            Debug.Log("hit obstacle!");
+            PlayerManager.gameOver = true;
         }
     }
 }

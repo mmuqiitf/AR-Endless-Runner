@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     protected Joystick joystick;
     protected JoyButton joyButton;
+    protected bool jump;
 
     private void Start()
     {
@@ -17,13 +18,20 @@ public class PlayerController : MonoBehaviour
     {
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = new Vector3(joystick.Horizontal * 5f, rigidbody.velocity.y, joystick.Vertical * 5f);
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Obstacle")
+        if (!jump && joyButton.Pressed)
         {
-            Debug.Log("fit");
+            jump = true;
+            rigidbody.velocity += Vector3.up * 5f;
+            Debug.Log("Jump");
+        }
+
+        if (jump && !joyButton.Pressed)
+        {
+            jump = false;
+            Debug.Log("Not Jump");
         }
     }
+
+
 }

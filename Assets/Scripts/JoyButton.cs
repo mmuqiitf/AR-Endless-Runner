@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class JoyButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    [HideInInspector]
+    public bool Pressed;
     public void OnPointerDown(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        Pressed = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        Pressed = false;
     }
 
-    [HideInInspector]
-    protected bool Pressed;
     // Start is called before the first frame update
     void Start()
     {
-        Pressed = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Pressed = false;
+        
     }
 }
