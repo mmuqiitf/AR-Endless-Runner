@@ -16,21 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
         var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(joystick.Horizontal * 5f, rigidbody.velocity.y, joystick.Vertical * 5f);
+        //rigidbody.velocity = new Vector3(joystick.Horizontal * 10f, rigidbody.velocity.y, joystick.Vertical * 10f);
+        rigidbody.AddForce(direction * 10f * Time.deltaTime, ForceMode.VelocityChange);
 
-        if (!jump && joyButton.Pressed)
-        {
-            jump = true;
-            rigidbody.velocity += Vector3.up * 5f;
-            Debug.Log("Jump");
-        }
-
-        if (jump && !joyButton.Pressed)
-        {
-            jump = false;
-            Debug.Log("Not Jump");
-        }
     }
 
 
