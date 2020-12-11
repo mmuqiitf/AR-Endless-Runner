@@ -10,12 +10,19 @@ public class DeployObstacle : MonoBehaviour
     public Transform ground;
     private Vector3 screenBounds;
     private Rigidbody rb;
+    private bool _start;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = obstaclePrefabs.GetComponent<Rigidbody>();
         StartCoroutine(obstacleWave());
+       
+    }
+
+    private void Update()
+    {
+       
     }
 
     private void spawnEnemy()
@@ -26,13 +33,16 @@ public class DeployObstacle : MonoBehaviour
     }
     
     private IEnumerator obstacleWave()
-    {
+    {   
+       
         while (true)
-        {
+        {   
+            _start = true;
             yield return new WaitForSeconds(respawnTime);
             spawnEnemy();
-        }
 
+        }
+        
     }
 
 }
