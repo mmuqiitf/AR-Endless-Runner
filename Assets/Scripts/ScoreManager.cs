@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    //public TextMeshProUGUI text;
+    public TextMeshProUGUI text;
     //public TextMeshProUGUI finalScore;
     //public TextMeshProUGUI highScore;
 
@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         score = score + value;
         Debug.Log("Score: " + score);
-        //text.text = score.ToString();
+        text.text = score.ToString();
 
         //finalScore.text = score.ToString();
 
