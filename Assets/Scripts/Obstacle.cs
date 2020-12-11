@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour
     public float speed = 50f;
     private Rigidbody rb;
     private Vector3 screenBounds;
+    public int value;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,14 @@ public class Obstacle : MonoBehaviour
         {
             Debug.Log("hit obstacle!");
             PlayerManager.gameOver = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            ScoreManager.instance.ChangeScore(value);
         }
     }
 }
