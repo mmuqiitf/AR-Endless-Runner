@@ -34,9 +34,9 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Score"))
         {
             ScoreManager.instance.ChangeScore(value);
         }
