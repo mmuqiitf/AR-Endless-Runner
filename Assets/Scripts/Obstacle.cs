@@ -36,7 +36,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Score"))
+        if (collision.transform.tag == "Score")
         {
             ScoreManager.instance.ChangeScore(value);
         }

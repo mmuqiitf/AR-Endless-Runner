@@ -31,15 +31,6 @@ public class ScoreManager : MonoBehaviour
         score = score + value;
         Debug.Log("Score: " + score);
         text.text = score.ToString();
-
-        //finalScore.text = score.ToString();
-
-        // high score
-        //if (score > PlayerPrefs.GetInt("High Score", 0))
-        //{
-        //    PlayerPrefs.SetInt("High Score", score);
-        //    highScore.text = score.ToString();
-        //}
     }
 
 
