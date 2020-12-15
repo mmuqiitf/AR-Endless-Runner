@@ -26,7 +26,6 @@ public class PlayerManager : MonoBehaviour
             panelMenu.SetActive(true);
          
         }
-
         if (SwipeManager.tap)
         {
             isGameStarted = true;

@@ -27,9 +27,14 @@ public class DeployObstacle : MonoBehaviour
 
     private void spawnEnemy()
     {
-        GameObject clone = Instantiate(obstaclePrefabs) as GameObject;
-        clone.transform.position = new Vector3( Random.Range(-1.75f, 2.329f)  , 1.167f, 7.37f);
-        rb.velocity = new Vector3(0, 0, -speed);
+        if (PlayerManager.isGameStarted)
+        {
+            Debug.Log("Is Game Started : " + PlayerManager.isGameStarted);
+            GameObject clone = Instantiate(obstaclePrefabs) as GameObject;
+            clone.transform.position = new Vector3(Random.Range(-1.75f, 2.329f), 1.167f, 7.37f);
+            rb.velocity = new Vector3(0, 0, -speed);
+        }
+        
     }
     
     private IEnumerator obstacleWave()
