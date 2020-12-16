@@ -7,8 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public TextMeshProUGUI text;
-    //public TextMeshProUGUI finalScore;
-    //public TextMeshProUGUI highScore;
+    public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI highScore;
 
     int score = 0;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
         {
             instance = this;
         }
-        //highScore.text = PlayerPrefs.GetInt("High Score", 0).ToString();
+        highScore.text = PlayerPrefs.GetInt("High Score", 0).ToString();
     }
 
     void Awake()
@@ -29,8 +29,15 @@ public class ScoreManager : MonoBehaviour
     public void ChangeScore(int value)
     {
         score = score + value;
-        Debug.Log("Score: " + score);
         text.text = score.ToString();
+
+        finalScore.text = score.ToString();
+
+        if (score > PlayerPrefs.GetInt("High Score", 0))
+        {
+            PlayerPrefs.SetInt("High Score", score);
+            highScore.text = score.ToString();
+        }
     }
 
 
