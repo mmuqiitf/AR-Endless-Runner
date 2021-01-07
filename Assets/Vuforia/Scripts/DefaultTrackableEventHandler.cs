@@ -22,7 +22,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     protected TrackableBehaviour mTrackableBehaviour;
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
-
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     #endregion // PROTECTED_MEMBER_VARIABLES
 
     #region UNITY_MONOBEHAVIOUR_METHODS
@@ -64,11 +65,19 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackingFound();
+            if (mTrackableBehaviour.TrackableName == "qr-code4")
+            {
+                audioSource.PlayOneShot(audioClip);
+            }
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             OnTrackingLost();
+            if (mTrackableBehaviour.TrackableName == "qr-code4")
+            {
+                audioSource.Stop();
+            }
         }
         else
         {
@@ -76,6 +85,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
             OnTrackingLost();
+            if (mTrackableBehaviour.TrackableName == "qr-code4")
+            {
+                audioSource.Stop();
+            }
+
         }
     }
 
