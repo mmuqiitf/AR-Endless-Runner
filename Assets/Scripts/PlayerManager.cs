@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject panelMenu;
     public static bool isGameStarted;
     public GameObject panelStart;
+    public GameObject joyStick;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +25,20 @@ public class PlayerManager : MonoBehaviour
         {
             Time.timeScale = 0;
             panelMenu.SetActive(true);
-         
+            isGameStarted = false;
+
         }
         if (SwipeManager.tap)
         {
             isGameStarted = true;
             panelStart.SetActive(false);
+        }
+        if (isGameStarted == true)
+        {
+            joyStick.SetActive(true);
+        } else
+        {
+            joyStick.SetActive(false);
         }
     }
 
