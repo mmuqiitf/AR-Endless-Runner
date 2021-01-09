@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
         //rigidbody.velocity = new Vector3(joystick.Horizontal * 10f, rigidbody.velocity.y, joystick.Vertical * 10f);
         rigidbody.AddForce(direction * 10f * Time.deltaTime, ForceMode.VelocityChange);
-
+        if(this.transform.localPosition.y <= 0.168)
+        {
+            PlayerManager.gameOver = true;
+            Debug.Log("Out of track!");
+        }
     }
 
 
